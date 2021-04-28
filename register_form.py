@@ -18,12 +18,34 @@ frame_food = Frame(frame_options, width=350, height=350, bg="#d48df0")
 frame_food.place(x=25, y=30)
 # frame_drinks = Frame(frame_options, width=350, height=200, bg="#eba2a2")
 # frame_drinks.place(x=25, y=380)
-label_food = Label(frame_food, 
-              text="Comida",
+
+label_correo = Label(frame_food, 
+              text="CORREO",
               font=("Calibri", "22", "bold"),
               fg="white",
               bg="#d48df0")
-label_food.place(x=20, y=290)
+label_correo.place(x=20, y=5)
+caja_correo = Entry(frame_food, width=40) 
+caja_correo.place(x=20, y=50)
+
+label_pwd = Label(frame_food, 
+              text="CONTRASENA",
+              font=("Calibri", "22", "bold"),
+              fg="white",
+              bg="#d48df0")
+label_pwd.place(x=20, y=85)
+caja_pwd = Entry(frame_food, width=40) 
+caja_pwd.place(x=20, y=130)
+
+label_edad = Label(frame_food, 
+              text="EDAD",
+              font=("Calibri", "22", "bold"),
+              fg="white",
+              bg="#d48df0")
+label_edad.place(x=20, y=160)
+caja_edad = Entry(frame_food, width=40) 
+caja_edad.place(x=20, y=200)
+
 
 # Widgets dentro del contender NAVBAR
 title = Label(frame_navbar, 
@@ -42,5 +64,12 @@ title2 = Label(frame_title,
               font=("Calibri", "18"),
               justify=LEFT)
 title2.place(x=25, y=50)
+
+#def validar_datos(): 
+    #caja_correo.delete()
+    #caja_pwd.delete()
+    #caja_edad.delete()
+    
+#boton_registrar = Button(frame_food, text="Registro", bg="#17abab",font=("Tahoma",12), width=30, height=2, command=validar_datos).place(x=20, y=200)
 
 window.mainloop()
