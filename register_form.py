@@ -1,9 +1,32 @@
 from tkinter import *
 from tkinter import ttk
+import mydatabase
 
 window = Tk()
 frame_app = Frame(window, width=400, height=600, bg="red")
 frame_app.pack()
+
+email = StringVar()
+pwd = StringVar()
+age = StringVar()
+
+def show_data():
+    email = entry_email.get()
+    pwd = entry_pwd.get()
+    age = entry_age.get()
+    print(email)
+    print(pwd)
+    print(age)
+
+def register():
+    email = entry_email.get()
+    pwd = entry_pwd.get()
+    age = entry_age.get()
+    
+    redsocial_db = mydatabase.MyDatabase()
+    data = (email, pwd, age)
+    print(data)
+    redsocial_db.insert_db(email, pwd, age)
 
 # Widgets dentro del contender APP
 frame_navbar = Frame(frame_app, width=400, height=100)
@@ -14,38 +37,35 @@ frame_options = Frame(frame_app, width=400, height=500)
 frame_options.grid(row=2, column=0)
 
 # Widgets dentro del contender OPTIONS
-frame_food = Frame(frame_options, width=350, height=350, bg="#d48df0")
+frame_food = Frame(frame_options, width=350, height=450, bg="#d48df0")
 frame_food.place(x=25, y=30)
-# frame_drinks = Frame(frame_options, width=350, height=200, bg="#eba2a2")
-# frame_drinks.place(x=25, y=380)
-
-label_correo = Label(frame_food, 
-              text="CORREO",
+label_email = Label(frame_food, 
+              text="Correo:",
               font=("Calibri", "22", "bold"),
               fg="white",
               bg="#d48df0")
-label_correo.place(x=20, y=5)
-caja_correo = Entry(frame_food, width=40) 
-caja_correo.place(x=20, y=50)
-
+label_email.place(x=20, y=60)
+entry_email = Entry(frame_food, justify=LEFT, width=30, font=("Calibri", "14", "bold"))
+entry_email.place(x=20, y=100)
 label_pwd = Label(frame_food, 
-              text="CONTRASENA",
+              text="Contraseña:",
               font=("Calibri", "22", "bold"),
               fg="white",
               bg="#d48df0")
-label_pwd.place(x=20, y=85)
-caja_pwd = Entry(frame_food, width=40) 
-caja_pwd.place(x=20, y=130)
-
-label_edad = Label(frame_food, 
-              text="EDAD",
+label_pwd.place(x=20, y=130)
+entry_pwd = Entry(frame_food, justify=LEFT, width=30, font=("Calibri", "14", "bold"), show="*")
+entry_pwd.place(x=20, y=170)
+label_age = Label(frame_food, 
+              text="Edad:",
               font=("Calibri", "22", "bold"),
               fg="white",
               bg="#d48df0")
-label_edad.place(x=20, y=160)
-caja_edad = Entry(frame_food, width=40) 
-caja_edad.place(x=20, y=200)
+label_age.place(x=20, y=200)
+entry_age = Entry(frame_food, justify=LEFT, width=30, font=("Calibri", "14", "bold"))
+entry_age.place(x=20, y=240)
 
+button_register = Button(frame_food, text="Registrarme", font=("Calibri", "14", "bold"), command=register)
+button_register.place(x=20, y=300)
 
 # Widgets dentro del contender NAVBAR
 title = Label(frame_navbar, 
@@ -64,12 +84,5 @@ title2 = Label(frame_title,
               font=("Calibri", "18"),
               justify=LEFT)
 title2.place(x=25, y=50)
-
-#def validar_datos(): 
-    #caja_correo.delete()
-    #caja_pwd.delete()
-    #caja_edad.delete()
-    
-#boton_registrar = Button(frame_food, text="Registro", bg="#17abab",font=("Tahoma",12), width=30, height=2, command=validar_datos).place(x=20, y=200)
 
 window.mainloop()
